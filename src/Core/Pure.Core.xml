@@ -1,0 +1,231 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Pure.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Pure.Core.Contracts.Commands.CommittalType">
+            <summary>
+            A key result of <see cref="M:Pure.Core.Contracts.Commands.IAtomicCommand.Execute"/>: whether the results were committed or rolled back
+            </summary>
+        </member>
+        <member name="F:Pure.Core.Contracts.Commands.CommittalType.Commit">
+            <summary>
+            The command's outcome was committed
+            </summary>
+        </member>
+        <member name="F:Pure.Core.Contracts.Commands.CommittalType.RollBack">
+            <summary>
+            The command's outcome was rolled back
+            </summary>
+        </member>
+        <member name="T:Pure.Core.Contracts.Commands.IAtomicCommand">
+            <summary>
+            An atomic command: either it is successful when it can be committed, or unsuccessful and can be rolled back.
+            </summary>
+        </member>
+        <member name="M:Pure.Core.Contracts.Commands.IAtomicCommand.Execute">
+            <summary>
+            Executes the current <see cref="T:Pure.Core.Contracts.Commands.IAtomicCommand"/> and either commits or rolls back the results.
+            </summary>
+            <returns>An <see cref="T:Pure.Core.Contracts.Commands.ICommandOutcome"/> indicating the <see cref="T:Pure.Core.Contracts.Commands.IAtomicCommand"/>'s success or failure</returns>
+        </member>
+        <member name="T:Pure.Core.Contracts.Commands.IAtomicCommandFactory">
+            <summary>
+            A factory that can create <see cref="T:Pure.Core.Contracts.Commands.IAtomicCommand"/> objects.
+            </summary>
+        </member>
+        <member name="M:Pure.Core.Contracts.Commands.IAtomicCommandFactory.GetCommand">
+            <summary>
+            Gets a command
+            </summary>
+            <returns>An <see cref="T:Pure.Core.Contracts.Commands.IAtomicCommand"/></returns>
+        </member>
+        <member name="T:Pure.Core.Contracts.Commands.ICommandImplementationOutcome">
+            <summary>
+            An indication of whether a command's outcome should be committed
+            </summary>
+        </member>
+        <member name="P:Pure.Core.Contracts.Commands.ICommandImplementationOutcome.ShouldCommit">
+            <summary>
+            Whether the outcome should be committed
+            </summary>
+        </member>
+        <member name="T:Pure.Core.Contracts.Commands.ICommandOutcome">
+            <summary>
+            The result of invoking <see cref="M:Pure.Core.Contracts.Commands.IAtomicCommand.Execute"/>
+            </summary>
+        </member>
+        <member name="P:Pure.Core.Contracts.Commands.ICommandOutcome.Committal">
+            <summary>
+            Whether the 
+            </summary>
+        </member>
+        <member name="T:Pure.Core.Contracts.IAggregateRoot">
+            <summary>
+            An aggregate root that represents the application as a whole
+            </summary>
+        </member>
+        <member name="M:Pure.Core.Contracts.IAggregateRoot.Bootstrap">
+            <summary>
+            Performs any required bootstrapping (such as IoC/DI registrations)
+            </summary>
+        </member>
+        <member name="T:Pure.Core.Contracts.IPersistableEntity`1">
+            <summary>
+            An identifiable object
+            </summary>
+        </member>
+        <member name="P:Pure.Core.Contracts.IPersistableEntity`1.Id">
+            <summary>
+            The global identifier of the current <see cref="T:Pure.Core.Contracts.IPersistableEntity`1"/> object
+            </summary>
+        </member>
+        <member name="P:Pure.Core.Contracts.IPersistableEntity`1.IdentifiableTypeName">
+            <summary>
+            A string representation of the current <see cref="T:Pure.Core.Contracts.IPersistableEntity`1"/>'s type
+            </summary>
+        </member>
+        <member name="T:Pure.Core.Contracts.UnitsOfWork.IUnitOfWork">
+            <summary>
+            A unit of work. Outcome of associated operation is to be evaluated, and either wholly committed or wholly rolled back.
+            </summary>
+        </member>
+        <member name="M:Pure.Core.Contracts.UnitsOfWork.IUnitOfWork.Begin">
+            <summary>
+            Begins the current <see cref="T:Pure.Core.Contracts.UnitsOfWork.IUnitOfWork"/>
+            </summary>
+        </member>
+        <member name="M:Pure.Core.Contracts.UnitsOfWork.IUnitOfWork.Commit">
+            <summary>
+            Commits the current <see cref="T:Pure.Core.Contracts.UnitsOfWork.IUnitOfWork"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Pure.Core.Contracts.UnitsOfWork.IUnitOfWork.Rollback">
+            <summary>
+            Rolls back the current <see cref="T:Pure.Core.Contracts.UnitsOfWork.IUnitOfWork"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Pure.Core.Contracts.UnitsOfWork.IUnitOfWorkFactory">
+            <summary>
+            A factory that can create <see cref="T:Pure.Core.Contracts.UnitsOfWork.IUnitOfWork"/> objects
+            </summary>
+        </member>
+        <member name="M:Pure.Core.Contracts.UnitsOfWork.IUnitOfWorkFactory.GetUnitOfWork">
+            <summary>
+            Gets an <see cref="T:Pure.Core.Contracts.UnitsOfWork.IUnitOfWork"/> instance
+            </summary>
+            <returns>An <see cref="T:Pure.Core.Contracts.UnitsOfWork.IUnitOfWork"/></returns>
+        </member>
+        <member name="T:Pure.Core.Contracts.Validation.IEntityValidationService`2">
+            <summary>
+            A service responsible for validating entities of type <typeparamref name="TEntity"/>
+            </summary>
+            <typeparam name="TEntity">The type of <see cref="T:Pure.Core.Contracts.IPersistableEntity`1"/> that the service can validate</typeparam>
+            <typeparam name="TId">The type of the <see cref="T:Pure.Core.Contracts.IPersistableEntity`1"/>'s <see cref="P:Pure.Core.Contracts.IPersistableEntity`1.Id"/></typeparam>
+        </member>
+        <member name="M:Pure.Core.Contracts.Validation.IEntityValidationService`2.Validate(`0)">
+            <summary>
+            Validates the <paramref name="entity"/>
+            </summary>
+            <param name="entity">The entity to be validated</param>
+            <returns>The outcome of validating the <paramref name="entity"/></returns>
+        </member>
+        <member name="T:Pure.Core.Contracts.Validation.IValidationOutcome">
+            <summary>
+            The result of validating a domain entity
+            </summary>
+        </member>
+        <member name="T:Pure.Core.Implementations.AtomicCommand">
+            <summary>
+            An atomic command, which, when <see cref="M:Pure.Core.Implementations.AtomicCommand.Execute"/> is called, succeeds and commits, or fails and rolls back.
+            </summary>
+        </member>
+        <member name="P:Pure.Core.Implementations.AtomicCommand.UnitOfWork">
+            <summary>
+            Gets the unit of work
+            </summary>
+        </member>
+        <member name="M:Pure.Core.Implementations.AtomicCommand.#ctor(Pure.Core.Contracts.UnitsOfWork.IUnitOfWork)">
+            <summary>
+            Initialises a new <see cref="T:Pure.Core.Implementations.AtomicCommand"/> instance
+            </summary>
+            <param name="unitOfWork">The type of </param>
+        </member>
+        <member name="M:Pure.Core.Implementations.AtomicCommand.Execute">
+            <summary>
+            Executes the current command. The command should be all set up ready to execute before calling this method.
+            </summary>
+            <returns>An <see cref="T:Pure.Core.Contracts.Commands.ICommandOutcome"/> indicating the outcome of the command</returns>
+        </member>
+        <member name="M:Pure.Core.Implementations.AtomicCommand.Implementation">
+            <summary>
+            Override this method to implement the logic of an <see cref="T:Pure.Core.Implementations.AtomicCommand"/> type. Usually, 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Pure.Core.Implementations.AtomicCommandFactory">
+            <summary>
+            A concrete factory that can create instances of <see cref="T:Pure.Core.Contracts.Commands.IAtomicCommand"/>
+            </summary>
+        </member>
+        <member name="M:Pure.Core.Implementations.AtomicCommandFactory.#ctor(Pure.Core.Contracts.UnitsOfWork.IUnitOfWorkFactory)">
+            <summary>
+            Initialises an atomic command factory instance.
+            </summary>
+            <param name="unitOfWorkFactory"></param>
+        </member>
+        <member name="P:Pure.Core.Implementations.AtomicCommandFactory.UnitOfWorkFactory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Pure.Core.Implementations.AtomicCommandFactory.GetCommand">
+            <summary>
+            Gets an instance of the <see cref="T:Pure.Core.Contracts.Commands.IAtomicCommand"/> provided by the current factory
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Pure.Core.Implementations.AtomicCommandFactory.InstantiateCommand(Pure.Core.Contracts.UnitsOfWork.IUnitOfWork)">
+            <summary>
+            Instantiates a command of the correct type, all set up and ready to execute
+            </summary>
+            <param name="unitOfWork"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Pure.Core.Implementations.CommandImplementationOutcome">
+            <summary>
+            The result of executing an <see cref="T:Pure.Core.Implementations.AtomicCommand"/>'s <see cref="M:Pure.Core.Implementations.AtomicCommand.Implementation"/> method
+            </summary>
+        </member>
+        <member name="M:Pure.Core.Implementations.CommandImplementationOutcome.#ctor(Pure.Core.Contracts.Commands.CommittalType)">
+            <summary>
+            Initialises a new implementation result, <paramref name="shouldCommit"/> indicating whether to commit the outcome
+            </summary>
+            <param name="shouldCommit"></param>
+        </member>
+        <member name="P:Pure.Core.Implementations.CommandImplementationOutcome.ShouldCommit">
+            <summary>
+            Whether the outcome of the command should be committed
+            </summary>
+        </member>
+        <member name="T:Pure.Core.Implementations.CommandResult">
+            <summary>
+            The result of executing a command, indicating whether it was committed or rolled back
+            </summary>
+        </member>
+        <member name="M:Pure.Core.Implementations.CommandResult.#ctor(Pure.Core.Contracts.Commands.CommittalType)">
+            <summary>
+            Initialises a command result, indicating the committal type
+            </summary>
+            <param name="committal"></param>
+        </member>
+        <member name="P:Pure.Core.Implementations.CommandResult.Committal">
+            <summary>
+            Gets whether the command resulted in a <see cref="F:Pure.Core.Contracts.Commands.CommittalType.Commit"/> or <see cref="F:Pure.Core.Contracts.Commands.CommittalType.RollBack"/>
+            </summary>
+        </member>
+    </members>
+</doc>
