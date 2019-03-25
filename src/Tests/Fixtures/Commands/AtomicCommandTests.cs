@@ -1,4 +1,4 @@
-using FluentAssert;
+using FluentAssertions;
 using Moq;
 using NUnit.Framework;
 using Pure.Core.Contracts.Commands;
@@ -21,7 +21,7 @@ namespace Tests.Fixtures.Commands
 
             var result = sut.Execute();
 
-            result.Committal.ShouldBeEqualTo(CommittalType.Commit);
+            result.Committal.Should().Be(CommittalType.Commit);
         }
 
         [Test]
@@ -46,7 +46,7 @@ namespace Tests.Fixtures.Commands
 
             var result = sut.Execute();
 
-            result.Committal.ShouldBeEqualTo(CommittalType.RollBack);
+            result.Committal.Should().Be(CommittalType.RollBack);
         }
 
         [Test]
@@ -71,7 +71,7 @@ namespace Tests.Fixtures.Commands
 
             var result = sut.Execute();
 
-            result.Committal.ShouldBeEqualTo(CommittalType.RollBack);
+            result.Committal.Should().Be(CommittalType.RollBack);
         }
 
         [Test]

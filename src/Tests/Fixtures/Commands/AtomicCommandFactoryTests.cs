@@ -1,5 +1,4 @@
-﻿using FluentAssert;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
 using Pure.Core.Contracts.UnitsOfWork;
 using Pure.Tests.Implementations;
@@ -25,6 +24,7 @@ namespace Pure.Tests.Fixtures.Commands
 
             command.Execute();
 
+            unitOfWork.Verify(x => x.Begin(), Times.Once);
             unitOfWork.Verify(x => x.Commit(), Times.Once);
         }
     }
