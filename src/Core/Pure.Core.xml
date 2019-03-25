@@ -162,7 +162,9 @@
         </member>
         <member name="M:Pure.Core.Implementations.AtomicCommand.Implementation">
             <summary>
-            Override this method to implement the logic of an <see cref="T:Pure.Core.Implementations.AtomicCommand"/> type. Usually, 
+            Override this method to implement the logic of an <see cref="T:Pure.Core.Implementations.AtomicCommand"/> type. Setup should have
+            been done before the command is <see cref="M:Pure.Core.Implementations.AtomicCommand.Execute"/>d, including dependencies on on any ports and adapters
+            such as repositories and services being made explicit in the constructor of the concrete class.
             </summary>
             <returns></returns>
         </member>
