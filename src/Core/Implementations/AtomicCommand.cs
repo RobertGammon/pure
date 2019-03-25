@@ -60,7 +60,9 @@ namespace Pure.Core.Implementations
         }
 
         /// <summary>
-        /// Override this method to implement the logic of an <see cref="AtomicCommand"/> type. Usually, 
+        /// Override this method to implement the logic of an <see cref="AtomicCommand"/> type. Setup should have
+        /// been done before the command is <see cref="Execute"/>d, including dependencies on on any ports and adapters
+        /// such as repositories and services being made explicit in the constructor of the concrete class.
         /// </summary>
         /// <returns></returns>
         protected abstract ICommandImplementationOutcome Implementation();
