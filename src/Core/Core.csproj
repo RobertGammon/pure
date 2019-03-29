@@ -14,8 +14,4 @@
     <DocumentationFile>C:\Users\rober_000\Documents\Code\pure\src\Core\Pure.Core.xml</DocumentationFile>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Contracts\Repositories\" />
-  </ItemGroup>
-
 </Project>

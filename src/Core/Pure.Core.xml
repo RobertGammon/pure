@@ -61,12 +61,24 @@
             Whether the 
             </summary>
         </member>
-        <member name="T:Pure.Core.Contracts.IAggregateRoot">
+        <member name="T:Pure.Core.Contracts.IAggregateRoot`1">
             <summary>
-            An aggregate root that represents the application as a whole
+            An aggregate root entity.
+            </summary>
+            <typeparam name="TId"></typeparam>
+            <remarks>
+            An aggregate root entity is one that may be itself persisted. <see cref="T:Pure.Core.Contracts.IPersistableEntity`1"/>
+            entities that do not implement <see cref="T:Pure.Core.Contracts.IAggregateRoot`1"/> are not themselves indended to be
+            individually persisted, but may be persisted by code handling persistence of their
+            <see cref="T:Pure.Core.Contracts.IAggregateRoot`1"/>.
+            </remarks>
+        </member>
+        <member name="T:Pure.Core.Contracts.ICompositionRoot">
+            <summary>
+            A composition root that represents an application
             </summary>
         </member>
-        <member name="M:Pure.Core.Contracts.IAggregateRoot.Bootstrap">
+        <member name="M:Pure.Core.Contracts.ICompositionRoot.Bootstrap">
             <summary>
             Performs any required bootstrapping (such as IoC/DI registrations)
             </summary>
@@ -85,6 +97,42 @@
             <summary>
             A string representation of the current <see cref="T:Pure.Core.Contracts.IPersistableEntity`1"/>'s type
             </summary>
+        </member>
+        <member name="T:Pure.Core.Contracts.Repositories.IReadRepository`2">
+            <summary>
+            A repository that can retrieve <see cref="T:Pure.Core.Contracts.IAggregateRoot`1"/> entities
+            from persistent store
+            </summary>
+        </member>
+        <member name="M:Pure.Core.Contracts.Repositories.IReadRepository`2.GetById(`1)">
+            <summary>
+            Gets a single <typeparamref name="TEntity"/> entity from persistent store, given
+            its <paramref name="id"/>.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Pure.Core.Contracts.Repositories.IWriteRepository`2">
+            <summary>
+            A repository that can create and update <typeparamref name="TEntity"/> entities
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TId"></typeparam>
+        </member>
+        <member name="M:Pure.Core.Contracts.Repositories.IWriteRepository`2.Update(`0)">
+            <summary>
+            Updates the <paramref name="entity"/> in persistent store
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+            <remarks>If saving the <paramref name="entity"/> for the first time, call <see cref="M:Pure.Core.Contracts.Repositories.IWriteRepository`2.Create(`0)"/> instead</remarks>
+        </member>
+        <member name="M:Pure.Core.Contracts.Repositories.IWriteRepository`2.Create(`0)">
+            <summary>
+            Saves a previously transient <paramref name="entity"/> to persistent store
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
         </member>
         <member name="T:Pure.Core.Contracts.UnitsOfWork.IUnitOfWork">
             <summary>
