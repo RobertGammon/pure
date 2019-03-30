@@ -1,14 +1,15 @@
 ﻿namespace Pure.Core.Contracts.Commands
 {
     /// <summary>
-    /// A factory that can create <see cref="IAtomicCommand"/> objects.
+    /// A factory that can create <see cref="IAtomicCommand{TCommandOutcome}"/> objects.
     /// </summary>
-    public interface IAtomicCommandFactory
+    public interface IAtomicCommandFactory<TCommand, TCommandOutcome>
+        where TCommand : IAtomicCommand<TCommandOutcome>
     {
         /// <summary>
         /// Gets a command
         /// </summary>
-        /// <returns>An <see cref="IAtomicCommand"/></returns>
-        IAtomicCommand GetCommand();
+        /// <returns>An <typeparamref name="TCommand"/></returns>
+        TCommand GetCommand();
     }
 }

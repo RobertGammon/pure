@@ -3,12 +3,12 @@
     /// <summary>
     /// An atomic command: either it is successful when it can be committed, or unsuccessful and can be rolled back.
     /// </summary>
-    public interface IAtomicCommand
+    public interface IAtomicCommand<TCommandOutcome>
     {
         /// <summary>
-        /// Executes the current <see cref="IAtomicCommand"/> and either commits or rolls back the results.
+        /// Executes the current <see cref="IAtomicCommand{TCommandOutcome}"/> and either commits or rolls back the results.
         /// </summary>
-        /// <returns>An <see cref="ICommandOutcome"/> indicating the <see cref="IAtomicCommand"/>'s success or failure</returns>
-        ICommandOutcome Execute();
+        /// <returns>An <typeparamref name="TCommandOutcome"/> indicating the <see cref="IAtomicCommand{TCommandOutcome}"/>'s success or failure</returns>
+        TCommandOutcome Execute();
     }
 }

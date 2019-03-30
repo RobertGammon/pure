@@ -4,9 +4,10 @@ using Pure.Core.Contracts.UnitsOfWork;
 namespace Pure.Core.Implementations
 {
     /// <summary>
-    /// A concrete factory that can create instances of <see cref="IAtomicCommand"/>
+    /// A concrete factory that can create instances of <typeparamref name="TCommand"/>
     /// </summary>
-    public abstract class AtomicCommandFactory : IAtomicCommandFactory
+    public abstract class AtomicCommandFactory<TCommand, TCommandOutcome> : IAtomicCommandFactory<TCommand, TCommandOutcome>
+        where TCommand : IAtomicCommand<TCommandOutcome>
     {
         /// <summary>
         /// Initialises an atomic command factory instance.
@@ -23,10 +24,10 @@ namespace Pure.Core.Implementations
         private IUnitOfWorkFactory UnitOfWorkFactory { get; }
 
         /// <summary>
-        /// Gets an instance of the <see cref="IAtomicCommand"/> provided by the current factory
+        /// Gets an instance of the <see cref="IAtomicCommand{TCommand}"/> provided by the current factory
         /// </summary>
         /// <returns></returns>
-        public IAtomicCommand GetCommand()
+        public TCommand GetCommand()
         {
             var unitOfWork = UnitOfWorkFactory.GetUnitOfWork();
             return InstantiateCommand(unitOfWork);
@@ -37,6 +38,6 @@ namespace Pure.Core.Implementations
         /// </summary>
         /// <param name="unitOfWork"></param>
         /// <returns></returns>
-        protected abstract IAtomicCommand InstantiateCommand(IUnitOfWork unitOfWork);
+        protected abstract TCommand InstantiateCommand(IUnitOfWork unitOfWork);
     }
 }

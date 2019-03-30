@@ -7,7 +7,9 @@ namespace Pure.Core.Implementations
     /// <summary>
     /// An atomic command, which, when <see cref="Execute"/> is called, succeeds and commits, or fails and rolls back.
     /// </summary>
-    public abstract class AtomicCommand : IAtomicCommand
+    public abstract class AtomicCommand<TCommandOutcome, TCommandImplementationOutcome> : IAtomicCommand<TCommandOutcome>
+        where TCommandOutcome : class, ICommandOutcome, new()
+        where TCommandImplementationOutcome : class, ICommandImplementationOutcome, new()
     {
 
         /// <summary>
@@ -16,7 +18,7 @@ namespace Pure.Core.Implementations
         private IUnitOfWork UnitOfWork { get; }
 
         /// <summary>
-        /// Initialises a new <see cref="AtomicCommand"/> instance
+        /// Initialises a new <see cref="AtomicCommand{TCommandOutcome, TCommandImplementationOutcome}"/> instance
         /// </summary>
         /// <param name="unitOfWork">The type of </param>
         public AtomicCommand(IUnitOfWork unitOfWork)
@@ -28,11 +30,11 @@ namespace Pure.Core.Implementations
         /// Executes the current command. The command should be all set up ready to execute before calling this method.
         /// </summary>
         /// <returns>An <see cref="ICommandOutcome"/> indicating the outcome of the command</returns>
-        public ICommandOutcome Execute()
+        public TCommandOutcome Execute()
         {
             UnitOfWork.Begin();
 
-            ICommandOutcome result;
+            TCommandOutcome result;
             try
             {
                 var implementationResult = Implementation();
@@ -46,25 +48,31 @@ namespace Pure.Core.Implementations
                     UnitOfWork.Rollback();
                 }
 
-                result = new CommandResult(implementationResult.ShouldCommit);
+                result = new TCommandOutcome
+                {
+                    Committal = implementationResult.ShouldCommit
+                };
             }
             catch (Exception)
             {
                 // todo: don't just swallow the exception
 
                 UnitOfWork.Rollback();
-                result = new CommandResult(CommittalType.RollBack);
+                result = new TCommandOutcome
+                {
+                    Committal = CommittalType.RollBack
+                };
             }
 
             return result;
         }
 
         /// <summary>
-        /// Override this method to implement the logic of an <see cref="AtomicCommand"/> type. Setup should have
-        /// been done before the command is <see cref="Execute"/>d, including dependencies on on any ports and adapters
-        /// such as repositories and services being made explicit in the constructor of the concrete class.
+        /// Override this method to implement the logic of an <see cref="AtomicCommand{TCommandOutcome, TCommandImplementationOutcome}"/> type.
+        /// Setup should have been done before the command is <see cref="Execute"/>d, including dependencies on on any ports and adapters,
+        /// such as repositories and services, being made explicit in the constructor of the concrete class.
         /// </summary>
         /// <returns></returns>
-        protected abstract ICommandImplementationOutcome Implementation();
+        protected abstract TCommandImplementationOutcome Implementation();
     }
 }

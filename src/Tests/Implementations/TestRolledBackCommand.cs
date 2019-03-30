@@ -4,13 +4,16 @@ using Pure.Core.Implementations;
 
 namespace Pure.Tests.Implementations
 {
-    public class TestRolledBackCommand : AtomicCommand
+    public class TestRolledBackCommand : AtomicCommand<CommandOutcome, CommandImplementationOutcome>
     {
         public TestRolledBackCommand(IUnitOfWork unitOfWork) : base(unitOfWork) { }
 
-        protected override ICommandImplementationOutcome Implementation()
+        protected override CommandImplementationOutcome Implementation()
         {
-            return new CommandImplementationOutcome(CommittalType.RollBack);
+            return new CommandImplementationOutcome
+            {
+                ShouldCommit = CommittalType.RollBack
+            };
         }
     }
 }

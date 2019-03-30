@@ -1,17 +1,19 @@
-﻿using System.Reflection;
-using Pure.Core.Contracts.Commands;
+﻿using Pure.Core.Contracts.Commands;
 using Pure.Core.Contracts.UnitsOfWork;
 using Pure.Core.Implementations;
 
 namespace Pure.Tests.Implementations
 {
-    public class TestCommittedCommand : AtomicCommand
+    public class TestCommittedCommand : AtomicCommand<CommandOutcome, CommandImplementationOutcome>
     {
         public TestCommittedCommand(IUnitOfWork unitOfWork) : base(unitOfWork) { }
 
-        protected override ICommandImplementationOutcome Implementation()
+        protected override CommandImplementationOutcome Implementation()
         {
-            return new CommandImplementationOutcome(CommittalType.Commit);
+            return new CommandImplementationOutcome
+            {
+                ShouldCommit = CommittalType.Commit
+            };
         }
     }
 }
