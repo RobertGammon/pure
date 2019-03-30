@@ -1,4 +1,6 @@
-﻿namespace Pure.Core.Contracts.Repositories
+﻿using Pure.Core.Contracts.Domain;
+
+namespace Pure.Core.Contracts.Repositories
 {
     /// <summary>
     /// A repository that can delete <typeparamref name="TEntity"/> entities

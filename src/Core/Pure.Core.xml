@@ -61,17 +61,32 @@
             Whether the 
             </summary>
         </member>
-        <member name="T:Pure.Core.Contracts.IAggregateRoot`1">
+        <member name="T:Pure.Core.Contracts.Domain.IAggregateRoot`1">
             <summary>
             An aggregate root entity.
             </summary>
             <typeparam name="TId"></typeparam>
             <remarks>
-            An aggregate root entity is one that may be itself persisted. <see cref="T:Pure.Core.Contracts.IPersistableEntity`1"/>
-            entities that do not implement <see cref="T:Pure.Core.Contracts.IAggregateRoot`1"/> are not themselves indended to be
+            An aggregate root entity is one that may be itself persisted. <see cref="T:Pure.Core.Contracts.Domain.IPersistableEntity`1"/>
+            entities that do not implement <see cref="T:Pure.Core.Contracts.Domain.IAggregateRoot`1"/> are not themselves indended to be
             individually persisted, but may be persisted by code handling persistence of their
-            <see cref="T:Pure.Core.Contracts.IAggregateRoot`1"/>.
+            <see cref="T:Pure.Core.Contracts.Domain.IAggregateRoot`1"/>.
             </remarks>
+        </member>
+        <member name="T:Pure.Core.Contracts.Domain.IPersistableEntity`1">
+            <summary>
+            An identifiable object
+            </summary>
+        </member>
+        <member name="P:Pure.Core.Contracts.Domain.IPersistableEntity`1.Id">
+            <summary>
+            The global identifier of the current <see cref="T:Pure.Core.Contracts.Domain.IPersistableEntity`1"/> object
+            </summary>
+        </member>
+        <member name="P:Pure.Core.Contracts.Domain.IPersistableEntity`1.IdentifiableTypeName">
+            <summary>
+            A string representation of the current <see cref="T:Pure.Core.Contracts.Domain.IPersistableEntity`1"/>'s type
+            </summary>
         </member>
         <member name="T:Pure.Core.Contracts.ICompositionRoot">
             <summary>
@@ -83,24 +98,23 @@
             Performs any required bootstrapping (such as IoC/DI registrations)
             </summary>
         </member>
-        <member name="T:Pure.Core.Contracts.IPersistableEntity`1">
+        <member name="T:Pure.Core.Contracts.Repositories.IDeleteRepository`2">
             <summary>
-            An identifiable object
+            A repository that can delete <typeparamref name="TEntity"/> entities
             </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TId"></typeparam>
         </member>
-        <member name="P:Pure.Core.Contracts.IPersistableEntity`1.Id">
+        <member name="M:Pure.Core.Contracts.Repositories.IDeleteRepository`2.Delete(`1)">
             <summary>
-            The global identifier of the current <see cref="T:Pure.Core.Contracts.IPersistableEntity`1"/> object
+            Deletes the <typeparamref name="TEntity"/> entity from persistent store
             </summary>
-        </member>
-        <member name="P:Pure.Core.Contracts.IPersistableEntity`1.IdentifiableTypeName">
-            <summary>
-            A string representation of the current <see cref="T:Pure.Core.Contracts.IPersistableEntity`1"/>'s type
-            </summary>
+            <param name="entity"></param>
+            <returns></returns>
         </member>
         <member name="T:Pure.Core.Contracts.Repositories.IReadRepository`2">
             <summary>
-            A repository that can retrieve <see cref="T:Pure.Core.Contracts.IAggregateRoot`1"/> entities
+            A repository that can retrieve <see cref="T:Pure.Core.Contracts.Domain.IAggregateRoot`1"/> entities
             from persistent store
             </summary>
         </member>
@@ -111,6 +125,11 @@
             </summary>
             <param name="id"></param>
             <returns></returns>
+        </member>
+        <member name="T:Pure.Core.Contracts.Repositories.ISaveResult">
+            <summary>
+            The result of a persistence creation, update or deletion
+            </summary>
         </member>
         <member name="T:Pure.Core.Contracts.Repositories.IWriteRepository`2">
             <summary>
@@ -171,8 +190,8 @@
             <summary>
             A service responsible for validating entities of type <typeparamref name="TEntity"/>
             </summary>
-            <typeparam name="TEntity">The type of <see cref="T:Pure.Core.Contracts.IPersistableEntity`1"/> that the service can validate</typeparam>
-            <typeparam name="TId">The type of the <see cref="T:Pure.Core.Contracts.IPersistableEntity`1"/>'s <see cref="P:Pure.Core.Contracts.IPersistableEntity`1.Id"/></typeparam>
+            <typeparam name="TEntity">The type of <see cref="T:Pure.Core.Contracts.Domain.IPersistableEntity`1"/> that the service can validate</typeparam>
+            <typeparam name="TId">The type of the <see cref="T:Pure.Core.Contracts.Domain.IPersistableEntity`1"/>'s <see cref="P:Pure.Core.Contracts.Domain.IPersistableEntity`1.Id"/></typeparam>
         </member>
         <member name="M:Pure.Core.Contracts.Validation.IEntityValidationService`2.Validate(`0)">
             <summary>

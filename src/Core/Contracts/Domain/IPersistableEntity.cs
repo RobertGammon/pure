@@ -1,4 +1,4 @@
-﻿namespace Pure.Core.Contracts
+﻿namespace Pure.Core.Contracts.Domain
 {
     /// <summary>
     /// An identifiable object

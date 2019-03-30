@@ -1,4 +1,6 @@
-﻿namespace Pure.Core.Contracts.Validation
+﻿using Pure.Core.Contracts.Domain;
+
+namespace Pure.Core.Contracts.Validation
 {
     /// <summary>
     /// A service responsible for validating entities of type <typeparamref name="TEntity"/>
