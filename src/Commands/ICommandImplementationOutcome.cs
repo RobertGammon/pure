@@ -1,4 +1,4 @@
-﻿namespace Pure.Core.Contracts.Commands
+﻿namespace Pure.Commands
 {
     /// <summary>
     /// An indication of whether a command's outcome should be committed
@@ -8,6 +8,6 @@
         /// <summary>
         /// Whether the outcome should be committed
         /// </summary>
-        CommittalType ShouldCommit { get; }
+        CommandOutcomeType Outcome { get; }
     }
 }

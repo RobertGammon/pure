@@ -1,4 +1,4 @@
-﻿using Pure.Core.Contracts.Commands;
+﻿using Pure.Commands;
 
 namespace Pure.Core.Implementations
 {
@@ -8,8 +8,8 @@ namespace Pure.Core.Implementations
     public class CommandOutcome : ICommandOutcome
     {
         /// <summary>
-        /// Gets whether the command resulted in a <see cref="CommittalType.Commit"/> or <see cref="CommittalType.RollBack"/>
+        /// Gets whether the command resulted in a <see cref="CommandOutcomeType.Success"/> or <see cref="CommandOutcomeType.Failure"/>
         /// </summary>
-        public CommittalType Committal { get; set; } = CommittalType.Unknown;
+        public CommandOutcomeType Outcome { get; set; } = CommandOutcomeType.Unknown;
     }
 }

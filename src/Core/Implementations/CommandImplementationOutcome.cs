@@ -1,4 +1,4 @@
-﻿using Pure.Core.Contracts.Commands;
+﻿using Pure.Commands;
 
 namespace Pure.Core.Implementations
 {
@@ -9,8 +9,8 @@ namespace Pure.Core.Implementations
     public class CommandImplementationOutcome : ICommandImplementationOutcome
     {
         /// <summary>
-        /// Whether the outcome of the command should be committed
+        /// Whether the command resulted in <see cref="CommandOutcomeType.Success"/> or <see cref="CommandOutcomeType.Failure"/>
         /// </summary>
-        public CommittalType ShouldCommit { get; set; } = CommittalType.Unknown;
+        public CommandOutcomeType Outcome { get; set; } = CommandOutcomeType.Unknown;
     }
 }

@@ -1,4 +1,4 @@
-﻿using Pure.Core.Contracts.Commands;
+﻿using Pure.Commands;
 using Pure.Core.Contracts.UnitsOfWork;
 
 namespace Pure.Core.Implementations

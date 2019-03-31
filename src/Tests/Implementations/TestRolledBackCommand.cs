@@ -1,4 +1,4 @@
-﻿using Pure.Core.Contracts.Commands;
+﻿using Pure.Commands;
 using Pure.Core.Contracts.UnitsOfWork;
 using Pure.Core.Implementations;
 
@@ -12,7 +12,7 @@ namespace Pure.Tests.Implementations
         {
             return new CommandImplementationOutcome
             {
-                ShouldCommit = CommittalType.RollBack
+                Outcome = CommandOutcomeType.Failure
             };
         }
     }

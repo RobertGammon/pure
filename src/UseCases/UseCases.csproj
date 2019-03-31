@@ -2,22 +2,21 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <AssemblyName>Pure.Core</AssemblyName>
-    <RootNamespace>Pure.Core</RootNamespace>
+    <AssemblyName>Pure.UseCases</AssemblyName>
+    <RootNamespace>Pure.UseCases</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>C:\Users\rober_000\Documents\Code\pure\src\Core\Pure.Core.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\rober_000\Documents\Code\pure\src\UseCases\Pure.UseCases.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\rober_000\Documents\Code\pure\src\Core\Pure.Core.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\rober_000\Documents\Code\pure\src\UseCases\Pure.UseCases.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Commands\Commands.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
-    <ProjectReference Include="..\Repositories\Repositories.csproj" />
   </ItemGroup>
 
 </Project>

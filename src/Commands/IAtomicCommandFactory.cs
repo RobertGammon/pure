@@ -1,4 +1,4 @@
-﻿namespace Pure.Core.Contracts.Commands
+﻿namespace Pure.Commands
 {
     /// <summary>
     /// A factory that can create <see cref="IAtomicCommand{TCommandOutcome}"/> objects.

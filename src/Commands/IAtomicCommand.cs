@@ -1,4 +1,4 @@
-﻿namespace Pure.Core.Contracts.Commands
+﻿namespace Pure.Commands
 {
     /// <summary>
     /// An atomic command: either it is successful when it can be committed, or unsuccessful and can be rolled back.

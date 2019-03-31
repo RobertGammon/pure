@@ -1,7 +1,7 @@
 using FluentAssertions;
 using Moq;
 using NUnit.Framework;
-using Pure.Core.Contracts.Commands;
+using Pure.Commands;
 using Pure.Core.Contracts.UnitsOfWork;
 using Pure.Tests.Implementations;
 
@@ -17,11 +17,11 @@ namespace Tests.Fixtures.Commands
         {
             var unitOfWork = new Mock<IUnitOfWork>();
 
-            var sut = new TestCommittedCommand(unitOfWork.Object);
+            var sut = new TestSuccessfulCommand(unitOfWork.Object);
 
             var result = sut.Execute();
 
-            result.Committal.Should().Be(CommittalType.Commit);
+            result.Outcome.Should().Be(CommandOutcomeType.Success);
         }
 
         [Test]
@@ -29,7 +29,7 @@ namespace Tests.Fixtures.Commands
         {
             var unitOfWork = new Mock<IUnitOfWork>();
 
-            var sut = new TestCommittedCommand(unitOfWork.Object);
+            var sut = new TestSuccessfulCommand(unitOfWork.Object);
 
             var result = sut.Execute();
 
@@ -46,7 +46,7 @@ namespace Tests.Fixtures.Commands
 
             var result = sut.Execute();
 
-            result.Committal.Should().Be(CommittalType.RollBack);
+            result.Outcome.Should().Be(CommandOutcomeType.Failure);
         }
 
         [Test]
@@ -71,7 +71,7 @@ namespace Tests.Fixtures.Commands
 
             var result = sut.Execute();
 
-            result.Committal.Should().Be(CommittalType.RollBack);
+            result.Outcome.Should().Be(CommandOutcomeType.Failure);
         }
 
         [Test]

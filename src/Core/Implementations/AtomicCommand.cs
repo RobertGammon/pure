@@ -1,5 +1,5 @@
 ﻿using System;
-using Pure.Core.Contracts.Commands;
+using Pure.Commands;
 using Pure.Core.Contracts.UnitsOfWork;
 
 namespace Pure.Core.Implementations
@@ -11,7 +11,6 @@ namespace Pure.Core.Implementations
         where TCommandOutcome : class, ICommandOutcome, new()
         where TCommandImplementationOutcome : class, ICommandImplementationOutcome, new()
     {
-
         /// <summary>
         /// Gets the unit of work
         /// </summary>
@@ -39,7 +38,7 @@ namespace Pure.Core.Implementations
             {
                 var implementationResult = Implementation();
 
-                if (implementationResult.ShouldCommit == CommittalType.Commit)
+                if (implementationResult.Outcome == CommandOutcomeType.Success)
                 {
                     UnitOfWork.Commit();
                 }
@@ -50,7 +49,7 @@ namespace Pure.Core.Implementations
 
                 result = new TCommandOutcome
                 {
-                    Committal = implementationResult.ShouldCommit
+                    Outcome = implementationResult.Outcome
                 };
             }
             catch (Exception)
@@ -60,7 +59,7 @@ namespace Pure.Core.Implementations
                 UnitOfWork.Rollback();
                 result = new TCommandOutcome
                 {
-                    Committal = CommittalType.RollBack
+                    Outcome = CommandOutcomeType.Failure
                 };
             }
 

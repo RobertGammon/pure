@@ -1,6 +1,6 @@
-﻿using Pure.Core.Contracts.Domain;
+﻿using Pure.Domain;
 
-namespace Pure.Core.Contracts.Repositories
+namespace Pure.Repositories
 {
     /// <summary>
     /// A repository that can retrieve <see cref="IAggregateRoot{TId}"/> entities

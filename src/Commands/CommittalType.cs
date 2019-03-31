@@ -1,21 +1,21 @@
-﻿namespace Pure.Core.Contracts.Commands
+﻿namespace Pure.Commands
 {
     /// <summary>
     /// A key result of <see cref="IAtomicCommand{T}.Execute"/>: whether the results were committed or rolled back
     /// </summary>
-    public enum CommittalType
+    public enum CommandOutcomeType
     {
         /// <summary>
         /// The command's outcome has not been determined yet
         /// </summary>
         Unknown,
         /// <summary>
-        /// The command's outcome was committed
+        /// The command succeeded
         /// </summary>
-        Commit,
+        Success,
         /// <summary>
-        /// The command's outcome was rolled back
+        /// The command failed
         /// </summary>
-        RollBack
+        Failure
     }
 }

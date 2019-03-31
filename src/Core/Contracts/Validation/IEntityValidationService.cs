@@ -1,4 +1,4 @@
-﻿using Pure.Core.Contracts.Domain;
+﻿using Pure.Domain;
 
 namespace Pure.Core.Contracts.Validation
 {

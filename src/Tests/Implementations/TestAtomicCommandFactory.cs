@@ -3,15 +3,15 @@ using Pure.Core.Implementations;
 
 namespace Pure.Tests.Implementations
 {
-    public class TestAtomicCommandFactory : AtomicCommandFactory<TestCommittedCommand, CommandOutcome>
+    public class TestAtomicCommandFactory : AtomicCommandFactory<TestSuccessfulCommand, CommandOutcome>
     {
         public TestAtomicCommandFactory(IUnitOfWorkFactory unitOfWorkFactory) : base(unitOfWorkFactory)
         {
         }
 
-        protected override TestCommittedCommand InstantiateCommand(IUnitOfWork unitOfWork)
+        protected override TestSuccessfulCommand InstantiateCommand(IUnitOfWork unitOfWork)
         {
-            return new TestCommittedCommand(unitOfWork);
+            return new TestSuccessfulCommand(unitOfWork);
         }
     }
 }

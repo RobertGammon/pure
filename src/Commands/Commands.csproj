@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AssemblyName>Pure.Commands</AssemblyName>
+    <RootNamespace>Pure.Commands</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\Users\rober_000\Documents\Code\pure\src\Commands\Pure.Commands.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\rober_000\Documents\Code\pure\src\Commands\Pure.Commands.xml</DocumentationFile>
+  </PropertyGroup>
+
+</Project>
