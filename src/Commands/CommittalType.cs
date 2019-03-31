@@ -1,7 +1,7 @@
 ﻿namespace Pure.Commands
 {
     /// <summary>
-    /// A key result of <see cref="IAtomicCommand{T}.Execute"/>: whether the results were committed or rolled back
+    /// A key result of <see cref="ICommand{T}.Execute"/>: whether the results were committed or rolled back
     /// </summary>
     public enum CommandOutcomeType
     {

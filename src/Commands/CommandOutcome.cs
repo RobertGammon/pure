@@ -1,6 +1,4 @@
-﻿using Pure.Commands;
-
-namespace Pure.Core.Implementations
+﻿namespace Pure.Commands
 {
     /// <summary>
     /// The result of executing a command, indicating whether it was committed or rolled back

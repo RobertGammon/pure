@@ -1,7 +1,7 @@
 ﻿namespace Pure.Commands
 {
     /// <summary>
-    /// The result of invoking <see cref="IAtomicCommand{TCommandOutcome}.Execute"/>
+    /// The result of invoking <see cref="ICommand{TCommandOutcome}.Execute"/>
     /// </summary>
     public interface ICommandOutcome
     {

@@ -4,9 +4,19 @@
         <name>Pure.Commands</name>
     </assembly>
     <members>
+        <member name="T:Pure.Commands.CommandOutcome">
+            <summary>
+            The result of executing a command, indicating whether it was committed or rolled back
+            </summary>
+        </member>
+        <member name="P:Pure.Commands.CommandOutcome.Outcome">
+            <summary>
+            Gets whether the command resulted in a <see cref="F:Pure.Commands.CommandOutcomeType.Success"/> or <see cref="F:Pure.Commands.CommandOutcomeType.Failure"/>
+            </summary>
+        </member>
         <member name="T:Pure.Commands.CommandOutcomeType">
             <summary>
-            A key result of <see cref="M:Pure.Commands.IAtomicCommand`1.Execute"/>: whether the results were committed or rolled back
+            A key result of <see cref="M:Pure.Commands.ICommand`1.Execute"/>: whether the results were committed or rolled back
             </summary>
         </member>
         <member name="F:Pure.Commands.CommandOutcomeType.Unknown">
@@ -24,23 +34,23 @@
             The command failed
             </summary>
         </member>
-        <member name="T:Pure.Commands.IAtomicCommand`1">
+        <member name="T:Pure.Commands.ICommand`1">
             <summary>
             An atomic command: either it is successful when it can be committed, or unsuccessful and can be rolled back.
             </summary>
         </member>
-        <member name="M:Pure.Commands.IAtomicCommand`1.Execute">
+        <member name="M:Pure.Commands.ICommand`1.Execute">
             <summary>
-            Executes the current <see cref="T:Pure.Commands.IAtomicCommand`1"/> and either commits or rolls back the results.
+            Executes the current <see cref="T:Pure.Commands.ICommand`1"/> and either commits or rolls back the results.
             </summary>
-            <returns>An <typeparamref name="TCommandOutcome"/> indicating the <see cref="T:Pure.Commands.IAtomicCommand`1"/>'s success or failure</returns>
+            <returns>An <typeparamref name="TCommandOutcome"/> indicating the <see cref="T:Pure.Commands.ICommand`1"/>'s success or failure</returns>
         </member>
-        <member name="T:Pure.Commands.IAtomicCommandFactory`2">
+        <member name="T:Pure.Commands.ICommandFactory`2">
             <summary>
-            A factory that can create <see cref="T:Pure.Commands.IAtomicCommand`1"/> objects.
+            A factory that can create <see cref="T:Pure.Commands.ICommand`1"/> objects.
             </summary>
         </member>
-        <member name="M:Pure.Commands.IAtomicCommandFactory`2.GetCommand">
+        <member name="M:Pure.Commands.ICommandFactory`2.GetCommand">
             <summary>
             Gets a command
             </summary>
@@ -58,7 +68,7 @@
         </member>
         <member name="T:Pure.Commands.ICommandOutcome">
             <summary>
-            The result of invoking <see cref="M:Pure.Commands.IAtomicCommand`1.Execute"/>
+            The result of invoking <see cref="M:Pure.Commands.ICommand`1.Execute"/>
             </summary>
         </member>
         <member name="P:Pure.Commands.ICommandOutcome.Outcome">

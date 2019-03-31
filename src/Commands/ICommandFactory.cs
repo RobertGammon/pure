@@ -1,10 +1,10 @@
 ﻿namespace Pure.Commands
 {
     /// <summary>
-    /// A factory that can create <see cref="IAtomicCommand{TCommandOutcome}"/> objects.
+    /// A factory that can create <see cref="ICommand{TCommandOutcome}"/> objects.
     /// </summary>
-    public interface IAtomicCommandFactory<TCommand, TCommandOutcome>
-        where TCommand : IAtomicCommand<TCommandOutcome>
+    public interface ICommandFactory<TCommand, TCommandOutcome>
+        where TCommand : ICommand<TCommandOutcome>
     {
         /// <summary>
         /// Gets a command
