@@ -1,4 +1,4 @@
-﻿namespace Pure.Core.Contracts.Domain
+﻿namespace Pure.Domain
 {
     /// <summary>
     /// An aggregate root entity.

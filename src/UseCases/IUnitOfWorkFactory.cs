@@ -1,4 +1,4 @@
-﻿namespace Pure.Core.Contracts.UnitsOfWork
+﻿namespace Pure.UseCases
 {
     /// <summary>
     /// A factory that can create <see cref="IUnitOfWork"/> objects

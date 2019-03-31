@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Pure.Repositories</name>
+    </assembly>
+    <members>
+        <member name="T:Pure.Repositories.IDeleteRepository`2">
+            <summary>
+            A repository that can delete <typeparamref name="TEntity"/> entities
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TId"></typeparam>
+        </member>
+        <member name="M:Pure.Repositories.IDeleteRepository`2.Delete(`1)">
+            <summary>
+            Deletes the <typeparamref name="TEntity"/> entity from persistent store
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Pure.Repositories.IReadRepository`2">
+            <summary>
+            A repository that can retrieve <see cref="T:Pure.Domain.IAggregateRoot`1"/> entities
+            from persistent store
+            </summary>
+        </member>
+        <member name="M:Pure.Repositories.IReadRepository`2.GetById(`1)">
+            <summary>
+            Gets a single <typeparamref name="TEntity"/> entity from persistent store, given
+            its <paramref name="id"/>.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Pure.Repositories.ISaveResult">
+            <summary>
+            The result of a persistence creation, update or deletion
+            </summary>
+        </member>
+        <member name="T:Pure.Repositories.IWriteRepository`2">
+            <summary>
+            A repository that can create and update <typeparamref name="TEntity"/> entities
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TId"></typeparam>
+        </member>
+        <member name="M:Pure.Repositories.IWriteRepository`2.Update(`0)">
+            <summary>
+            Updates the <paramref name="entity"/> in persistent store
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+            <remarks>If saving the <paramref name="entity"/> for the first time, call <see cref="M:Pure.Repositories.IWriteRepository`2.Create(`0)"/> instead</remarks>
+        </member>
+        <member name="M:Pure.Repositories.IWriteRepository`2.Create(`0)">
+            <summary>
+            Saves a previously transient <paramref name="entity"/> to persistent store
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

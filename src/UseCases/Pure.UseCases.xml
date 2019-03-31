@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Pure.UseCases</name>
+    </assembly>
+    <members>
+        <member name="T:Pure.UseCases.IUnitOfWork">
+            <summary>
+            A unit of work. Outcome of associated operation is to be evaluated, and either wholly committed or wholly rolled back.
+            </summary>
+        </member>
+        <member name="M:Pure.UseCases.IUnitOfWork.Begin">
+            <summary>
+            Begins the current <see cref="T:Pure.UseCases.IUnitOfWork"/>
+            </summary>
+        </member>
+        <member name="M:Pure.UseCases.IUnitOfWork.Commit">
+            <summary>
+            Commits the current <see cref="T:Pure.UseCases.IUnitOfWork"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Pure.UseCases.IUnitOfWork.Rollback">
+            <summary>
+            Rolls back the current <see cref="T:Pure.UseCases.IUnitOfWork"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Pure.UseCases.IUnitOfWorkFactory">
+            <summary>
+            A factory that can create <see cref="T:Pure.UseCases.IUnitOfWork"/> objects
+            </summary>
+        </member>
+        <member name="M:Pure.UseCases.IUnitOfWorkFactory.GetUnitOfWork">
+            <summary>
+            Gets an <see cref="T:Pure.UseCases.IUnitOfWork"/> instance
+            </summary>
+            <returns>An <see cref="T:Pure.UseCases.IUnitOfWork"/></returns>
+        </member>
+        <member name="T:Pure.UseCases.UseCaseBase">
+            <summary>
+            Base class for UseCase entities
+            </summary>
+            <remarks>
+            The intention is for a use case class to call <see cref="T:Pure.Commands.ICommand`1"/> objects
+            </remarks>
+        </member>
+        <member name="M:Pure.UseCases.UseCaseBase.#ctor(Pure.UseCases.IUnitOfWorkFactory)">
+            <summary>
+            Initialises a use case class
+            </summary>
+            <param name="unitOfWorkFactory"></param>
+        </member>
+        <member name="P:Pure.UseCases.UseCaseBase.UnitOfWorkFactory">
+            <summary>
+            Gets the unit of work factory for the current use case
+            </summary>
+        </member>
+    </members>
+</doc>

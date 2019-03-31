@@ -1,4 +1,4 @@
-﻿namespace Pure.Core.Contracts.UnitsOfWork
+﻿namespace Pure.UseCases
 {
     /// <summary>
     /// A unit of work. Outcome of associated operation is to be evaluated, and either wholly committed or wholly rolled back.
