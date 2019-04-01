@@ -10,5 +10,5 @@
     /// individually persisted, but may be persisted by code handling persistence of their
     /// <see cref="IAggregateRoot{TId}"/>.
     /// </remarks>
-    public interface IAggregateRoot<TId> : IPersistableEntity<TId> { }
+    public interface IAggregateRoot<TId> : IEntity<TId> { }
 }

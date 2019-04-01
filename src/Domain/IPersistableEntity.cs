@@ -3,7 +3,7 @@
     /// <summary>
     /// An identifiable object
     /// </summary>
-    public interface IPersistableEntity<TId>
+    public interface IEntity<TId>
     {
         /// <summary>
         /// The global identifier of the current <see cref="IPersistableEntity{TId}"/> object
